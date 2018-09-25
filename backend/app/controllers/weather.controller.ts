@@ -3,7 +3,7 @@
  */
 
 // import the types we need from express
-import { Router, Request, Response } from 'express';
+import {Router, Request, Response} from 'express';
 
 // instantiate a Router for this controller. The Router is responsible for defining all routes at or below this
 // controller's root. Since the server binds this controller's root to /weather (see server.ts), this router instance
@@ -14,22 +14,22 @@ const router: Router = Router();
 // add an **endpoint** to this controller's router, at its root (in the server, we define this controller's
 // root to be /weather, therefore this "/" endpoint will be bound to /weather
 router.get('/', (req: Request, res: Response) => {
-    // generate some random weather data
-    var temperature = Math.floor(Math.random() * 35);
-    var humidity = Math.round(Math.random() * 100);
+  // generate some random weather data
+  var temperature = Math.floor(Math.random() * 45);
+  var humidity = Math.round(Math.random() * 100);
 
-    // put the data into a response object
-    var resPayload = {
-        "tmp_celsius": temperature,
-        "rel_humidity_percent": humidity,
-        "timestamp": Date.now()
-    };
+  // put the data into a response object
+  var resPayload = {
+    'tmp_celsius': temperature,
+    'rel_humidity_percent': humidity,
+    'timestamp': Date.now()
+  };
 
-    // specify the HTTP status code (see https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
-    res.statusCode = 200;
+  // specify the HTTP status code (see https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+  res.statusCode = 200;
 
-    // respond to the request with the JSON payload we just created
-    res.json(resPayload);
+  // respond to the request with the JSON payload we just created
+  res.json(resPayload);
 });
 
 // export this controller's router as WeatherController, with type Router

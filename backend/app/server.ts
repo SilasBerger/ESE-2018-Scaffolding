@@ -1,4 +1,3 @@
-
 // import everything from express and assign it to the express variable
 import express from 'express';
 
@@ -10,14 +9,14 @@ const app: express.Application = express();
 
 // define the port the express app will listen on
 var port: number = 3000;
-if(process.env.PORT !== undefined){
-	port = parseInt(process.env.PORT)
+if (process.env.PORT !== undefined) {
+  port = parseInt(process.env.PORT);
 }
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
 });
 
 // mount the WelcomeController at the /welcome route. See welcome.controller.ts for more information.
@@ -28,6 +27,6 @@ app.use('/weather', WeatherController);
 
 // start serving the application on the given port
 app.listen(port, () => {
-    // success callback, log something to console as soon as the application has started
-    console.log(`Listening at http://localhost:${port}/`);
+  // success callback, log something to console as soon as the application has started
+  console.log(`Listening at http://localhost:${port}/`);
 });

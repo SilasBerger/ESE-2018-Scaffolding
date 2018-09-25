@@ -17,7 +17,7 @@
  */
 
 // import the types we need from express
-import { Router, Request, Response } from 'express';
+import {Router, Request, Response} from 'express';
 
 // instantiate a Router for this controller. The Router is responsible for defining all routes at or below this
 // controller's root. Since the server.ts binds this controller's root to /welcome (see server.ts), this router
@@ -28,19 +28,19 @@ const router: Router = Router();
 // add an **endpoint** to this controller's router, at its root (in the server, we define this controller's
 // root to be /welcome, therefore this "/" endpoint will be bound to /welcome
 router.get('/', (req: Request, res: Response) => {
-    // reply with a hello world text response
-    res.send('Hello, World!');
+  // reply with a hello world text response
+  res.send('Hello, World!');
 });
 
 // add another **endpoint**, but define a placeholder for a path parameter, which we'll call "name". This endpoint
 // will be bound to /welcome/<someName> (again, the /welcome route is defined by server.ts, we just add /:name in this
 // controller)
 router.get('/:name', (req: Request, res: Response) => {
-    // extract the name from the path parameters
-    let { name } = req.params;
+  // extract the name from the path parameters
+  let {name} = req.params;
 
-    // greet the given name
-    res.send(`Hello, ${name}`);
+  // greet the given name
+  res.send(`Hello, ${name}`);
 });
 
 // export this controller's router as WelcomeController, with type Router
